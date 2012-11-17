@@ -1,0 +1,52 @@
+トップ 
+オーナー/ユーザー 
+・カレンダーUIで各日付にその日の登録イベント数が表示される(一番登録数が多いイベント名でも可) 
+・日付をクリックするとイベント一覧 
+
+イベント詳細 
+オーナー/ユーザー 
+・イベントの内容を表示(タイトル/説明/日付/参加者数) 
+・参加者一覧 
+・参加ボタン（未参加の場合, mixiカレンダーへの共有チェック, 公開範囲はデフォルト友人） 
+・参加番号（参加済の場合）） 
+
+
+イベント登録/編集 
+オーナー 
+・イベントの入力(タイトル/説明/実施日時/参加上限数) 
+
+
+
+CREATE TABLE event_id_pot ( 
+event_id bigint(20) unsigned NOT NULL 
+) ENGINE=MyISAM DEFAULT CHARSET=utf8; 
+
+
+CREATE TABLE event ( 
+event_id bigint(20) unsigned NOT NULL, 
+page_id bigint(20) unsigned NOT NULL, 
+module_id bigint(20) unsigned NOT NULL, 
+title VARCHAR(40) NOT NULL, 
+description text NOT NULL, 
+details_json text NOT NULL, 
+category VARCHAR(20) NOT NULL, 
+join_count int(10) unsigned NOT NULL, 
+scheduled_datetime datetime NOT NULL, 
+created_at datetime, 
+PRIMARY KEY (event_id), 
+INDEX idx_1 (page_id, module_id, scheduled_datetime), 
+INDEX idx_2 (scheduled_datetime), 
+INDEX idx_3 (created_at) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+
+
+CREATE TABLE attend_member ( 
+event_id bigint(20) unsigned NOT NULL, 
+member_id VARCHAR(20) NOT NULL, 
+number int(10) unsigned NOT NULL, 
+created_at datetime, 
+PRIMARY KEY (event_id, member_id), 
+INDEX idx_1 (member_id), 
+INDEX idx_2 (created_at) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+

@@ -1,0 +1,38 @@
+[% INCLUDE includes/header.tt %]
+
+<div class="container-narrow">
+
+[%# INCLUDE includes/navi.tt %]
+
+<h1>[% year %] / [% month %]</h1>
+<ul class="pager">
+  <li><a href="[% prev | html %]">Previous</a></li>
+  <li><a href="[% next | html %]">Next</a></li>
+</ul>
+
+<table class="table well">
+[% FOREACH item = schedule_calendar %]
+<tr[% IF item.dow_number == 0%] class="calSunday"[% END %]>
+
+<td>[% item.day | html %]</td>
+<td>[% item.dow_caption | html %]</td>
+<td>
+[% FOREACH schedule = item.schedules %]
+<a href="/event/view/[% schedule.event_id %]">[% schedule.title %]</a>&nbsp;
+[% END %]
+&nbsp;
+</td>
+
+</tr>
+[% END %]
+</table>
+
+<ul class="pager">
+  <li><a href="[% prev | html %]">Previous</a></li>
+  <li><a href="[% next | html %]">Next</a></li>
+</ul>
+
+</div>
+<!-- /div.container -->
+
+[% INCLUDE includes/footer.tt %]

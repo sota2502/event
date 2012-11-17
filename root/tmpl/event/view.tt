@@ -1,0 +1,30 @@
+[% INCLUDE includes/header.tt %]
+
+<div class="container-narrow">
+
+[%# INCLUDE includes/navi.tt %]
+
+<a href="/event/[% year | html %]/[% month | html %]">&lt;&lt;[% year | html %]年[% month | html %]月のカレンダーに戻る</a>
+
+<h1>[% event.title | html %]</h1>
+
+<dl>
+<dt>Description</dt>
+<dd>[% event.description %]</dd>
+
+<dt>Date</dt>
+<dd>[% event.scheduled_datetime %]</dd>
+
+<dt>Description</dt>
+<dd>[% event.description %]</dd>
+</dl>
+
+<div class="jumbotron">
+<input class="btn btn-primary btn-large" type="button" value="Join!" />
+<p> 123 / 1000 </p>
+</div>
+
+</div>
+<!-- /div.container -->
+
+[% INCLUDE includes/footer.tt %]
