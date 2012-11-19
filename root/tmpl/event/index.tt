@@ -10,6 +10,10 @@
   <li><a href="[% next | html %]">Next</a></li>
 </ul>
 
+<p>
+<a href="/event/add">Add new event</a>
+</p>
+
 <table class="table well">
 [% FOREACH item = schedule_calendar %]
 <tr[% IF item.dow_number == 0%] class="calSunday"[% END %]>

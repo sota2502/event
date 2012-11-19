@@ -3,6 +3,7 @@ use Moose;
 use namespace::autoclean;
 
 use Catalyst::Runtime 5.80;
+use Date::Calc;
 
 # Set flags and add plugins for the application.
 #
@@ -45,6 +46,22 @@ __PACKAGE__->config(
 # Start the application
 __PACKAGE__->setup();
 
+
+sub page_id {
+    return 1;
+}
+
+sub module_id {
+    return 1;
+}
+
+sub member_id {
+    return 'abcdefghijklmnopqrst';
+}
+
+sub now {
+    return sprintf "%04d-%02d-%02d %02d:%02d:%02d", Date::Calc::Today_and_Now;
+}
 
 =head1 NAME
 

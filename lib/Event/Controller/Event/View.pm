@@ -35,6 +35,17 @@ sub index :Path :Args {
     $c->stash->{month} = $month;
 
     $c->stash->{template} = 'event/view.tt';
+
+    $self->assign_is_attended($c, $event_id);
+}
+
+sub assign_is_attended {
+    my ($self, $c, $event_id ) = @_;
+
+    my $attend_member = $c->model('DBIC::AttendMember')->find($event_id, $c->member_id );
+    $c->stash->{is_attended} = $attend_member ? 1 : 0;
+    return unless ( $attend_member );
+    $c->stash->{attend_member} = $attend_member;
 }
 
 

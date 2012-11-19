@@ -1,9 +1,13 @@
+DROP TABLE event;
 CREATE TABLE event(
     event_id INTEGER PRIMARY KEY AUTOINCREMENT,
     page_id INTEGER NOT NULL,
     module_id INTEGER NOT NULL,
     title VARCHAR(40),
     description TEXT,
+    attend_count INTEGER,
+    attend_limit INTEGER,
+    details_json TEXT,
     scheduled_datetime DATETIME,
     created_datetime DATETIME
 );
